@@ -1,0 +1,11 @@
+#Excluding csv files
+*.csv
+
+#Excluding tsv files
+*.tsv
+
+#Excluding Rhistory files
+*.Rhistory
+
+#Excluding Rdata
+*.Rdata
