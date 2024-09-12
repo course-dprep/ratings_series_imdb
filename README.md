@@ -7,6 +7,8 @@ date: "2024-09-10"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# Research Motivation
+User ratings are found to be a key success factor of series and help production companies gain financial success (Hsu et al., 2014). As such, it is important to determine what factors influence these ratings, in order to develop series that are most likely to receive high ratings. The length of an individual episode is found to have a significant effect on the rating on that episode (Danaher et al., 2011). However, how the length of the complete series influences the rating of the episodes remains unexplored. This study fills this gap in the literature by exploring the following research question:
 
 # Research Question
 
@@ -94,3 +96,7 @@ Below you will find the variable names and variable descriptions per dataset.
 | parentTconst (string)   | Alphanumeric identifier of the parent TV Series |
 | seasonNumber (integer)  | Season number the episode belongs to            |
 | episodeNumber (integer) | Episode number of the tconst in the TV series   |
+
+# Reference List
+Danaher, P. J., Dagger, T. S., & Smith, M. S. (2011). Forecasting television ratings. International Journal of Forecasting, 27(4), 1215–1240. https://doi.org/10.1016/j.ijforecast.2010.08.002
+Hsu, P., Shen, Y., & Xie, X. (2014). Predicting Movies User Ratings with Imdb Attributes. In Lecture notes in computer science (pp. 444–453). https://doi.org/10.1007/978-3-319-11740-9_41
