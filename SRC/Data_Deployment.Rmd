@@ -1,6 +1,6 @@
 ---
 title: "Final Report"
-author: "Julian_Peters"
+author: "Group 1"
 date: "2024-08-30"
 output: pdf_document
 ---
