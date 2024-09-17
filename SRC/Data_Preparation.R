@@ -20,8 +20,11 @@ raw_data <- Episode_Data %>%
 # Filter out unused variables
 selected_columns = raw_data %>% select(-titleType, -primaryTitle, -originalTitle)
 
-# Filter out episodes with NA or less than 206 (the mean) votes
-filtered_data = selected_columns %>% filter(numVotes >=206)
+# Filter out TV shows that have episodes with NA or less than 206 (the mean) votes
+filtered_data <- selected_columns %>%
+  group_by(parentTconst) %>%                                         # Group by TV show
+  filter(all(numVotes >= 206) & all(episodeNumber != "\\N") & all(seasonNumber != "\\N")) %>%  # Keep only shows where all episodes meet the conditions
+  ungroup()                                                          # Ungroup the data for further operations
 
 # Change column names
 colnames(filtered_data) = c( "episode_id", "show_id", "season_number", "episode_number", "is_for_adult", "start_year", "end_year", "episode_minutes", "genres", "rating", "n_votes")
