@@ -26,6 +26,28 @@ filtered_data = selected_columns %>% filter(numVotes >=206)
 # Change column names
 colnames(filtered_data) = c( "episode_id", "show_id", "season_number", "episode_number", "is_for_adult", "start_year", "end_year", "episode_minutes", "genres", "rating", "n_votes")
 
+# Creating the independent variable for the linear regression
+# Converting episode_minutes from character to numeric values
+filtered_data$episode_minutes <- as.numeric(as.character(filtered_data$episode_minutes))
+
+# Arranging by series, season number, and episode number
+filtered_data <- filtered_data %>%
+  arrange(show_id, season_number, episode_number)
+
+# Calculating the cumulative runtime within each series and season
+filtered_data <- filtered_data %>%
+  group_by(show_id, season_number) %>%
+  mutate(season_runtime = cumsum(episode_minutes) - episode_minutes)
+
+# Calculating the total runtime of previous seasons within series
+filtered_data <- filtered_data %>%
+  group_by(show_id) %>%
+  mutate(prev_season_runtime = lag(cumsum(episode_minutes), default = 0))
+
+# Create the totalSeries_Runtime variable
+filtered_data <- filtered_data %>%
+  mutate(series_runtime = season_runtime + prev_season_runtime)
+
 write.csv(filtered_data, here("gen", "data_preparation", "output", "cleaned_data.csv"), row.names = FALSE)
 
 print('file 3 run')
