@@ -97,6 +97,22 @@ Below you will find the variable names and variable descriptions per dataset.
 | seasonNumber (integer)  | Season number the episode belongs to            |
 | episodeNumber (integer) | Episode number of the tconst in the TV series   |
 
+## Cleaned_data dataset
+
+| Variable Name             | Variable Description                                                                          |
+|---------------------------|-----------------------------------------------------------------------------------------------|
+| episode_id (string)       | Alphanumeric identifier of episode                                                            |
+| show_id (string)          | Alphanumeric identifier of the parent TV Series                                               |
+| season_number (integer)   | Season number the episode belongs to                                                          |
+| episode_number (integer)  | Episode number of the tconst in the TV series                                                 |
+| is_for_adult (boolean)    |  0: non-adult title; 1: adult title                                                           |
+| start_year (YYYY)         | Represents the release year of a title. In the case of TV Series, it is the series start year |
+| end_year (YYYY)           | TV Series end year. ‘\\N’ for all other title types                                           |
+| episode_minutes (integer) | Primary runtime of the title, in minutes                                                      |
+| genres (string array)     | Includes up to three genres associated with the title                                         |
+| rating (double)           | Weighted average of all the individual user ratings                                           |
+| n_votes (integer)         | Number of votes the title has received                                                        |
+
 # Reference List
 Danaher, P. J., Dagger, T. S., & Smith, M. S. (2011). Forecasting television ratings. International Journal of Forecasting, 27(4), 1215–1240. https://doi.org/10.1016/j.ijforecast.2010.08.002
 Hsu, P., Shen, Y., & Xie, X. (2014). Predicting Movies User Ratings with Imdb Attributes. In Lecture notes in computer science (pp. 444–453). https://doi.org/10.1007/978-3-319-11740-9_41
