@@ -16,5 +16,5 @@ SRC/Data_Deployment.html: SRC/Data_Deployment.Rmd
 	Rscript -e "rmarkdown::render('SRC/Data_Deployment.Rmd')"
 
 clean: 
-	R -e "unlink('Data')"
-	R -e "unlink('Gen')"
+	R -e "unlink('Data', recursive = TRUE)"
+	R -e "unlink('Gen', recursive = TRUE)"
