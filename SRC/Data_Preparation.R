@@ -34,9 +34,11 @@ print('Episode, Genre and Ratings data combined in dataframe raw_data')
 selected_columns = raw_data %>% select(-titleType, -primaryTitle, -originalTitle)
 print('unused variables deleted')
 
-# Filter out episodes with NA or less than 206 (the mean) votes
-filtered_data = selected_columns %>% filter(numVotes >=206)
-print('series and episode votes: NA filtered')
+# Filter out TV shows that have episodes with NA or less than 206 (the mean) votes
+filtered_data <- selected_columns %>%
+  group_by(parentTconst) %>%                                         # Group by TV show
+  filter(all(numVotes >= 206) & all(episodeNumber != "\\N") & all(seasonNumber != "\\N")) %>%  # Keep only shows where all episodes meet the conditions
+  ungroup()                                                          # Ungroup the data for further operations
 
 # Change column names
 colnames(filtered_data) = c( "episode_id", "show_id", "season_number", "episode_number", "is_for_adult", "start_year", "end_year", "episode_minutes", "genres", "rating", "n_votes")
@@ -65,8 +67,6 @@ filtered_data <- filtered_data %>%
   mutate(series_runtime = season_runtime + prev_season_runtime)
 
 write.csv(filtered_data, here("gen", "data_preparation", "output", "cleaned_data.csv"), row.names = FALSE)
-
-2c966ebc706abe853da52c0565d381f04185af61
 
 ### Output ###
 # Saving the alterations to a new file called cleaned_data.csv
