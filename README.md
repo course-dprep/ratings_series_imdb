@@ -7,28 +7,80 @@ date: "2024-09-10"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-# Research Motivation
+# Impact of TV Show Length on Episode Ratings - A Study on IMDB Data
+
+## Research Motivation
 User ratings are found to be a key success factor of series and help production companies gain financial success (Hsu et al., 2014). As such, it is important to determine what factors influence these ratings, in order to develop series that are most likely to receive high ratings. The length of an individual episode is found to have a significant effect on the rating on that episode (Danaher et al., 2011). However, how the length of the complete series influences the rating of the episodes remains unexplored. This study fills this gap in the literature by exploring the following research question:
 
-# Research Question
+## Research Question
 
 Does the length of a TV show affect the average rating of a TV show episodes in a positive or negative way?
 
-# Research Method
+## Research Method
 
-The chosen research method for the mentioned research question is a regression analysis. This research method will be suitable to investigate the relation between the variables, the length of a TV show and the episode ratings. Performing a regression analysis allows us to determine if the length of a TV show significantly affects the ratings of its episodes and to learn more about the direction of the relationship.
+The chosen research method for the mentioned research question is a regression analysis. This research method will be suitable to investigate the relation between the following variables: the length of a TV show and the episode ratings. Performing a regression analysis allows us to determine if the length of a TV show significantly affects the ratings of its episodes and to learn more about the direction of the relationship.
 
 To perform the regression analysis we will make use of the following data sets: 1. title.episode.tsv.gz a. To find the series and the episodes 2. title.ratings.tsv.gz a. Average rating of individual users combined 3. title.basics.tsv.gz a. Genre for cross reference
 
-# Way of Deployment
+## Results
+
+## Way of Deployment
 
 The chosen way of deployment will be a PDF report. This was chosen to make a structured layout and to ensure consistency over multiple devices and platforms.
 
-# Workflow
+## Workflow
 
 The following workflow will be performed in this research to ensure an automated and reproducible workflow: 1. Data exploration 2. Data preperation 3. Analysis 4. Evaluation and deployment
 
-# Data Extraction
+## Repository Overview
+Below, you find an overview of the directory structure and files of this project. 
+
+│   .gitignore
+│   .Rhistory
+│   LICENSE
+│   makefile
+│   README.md
+│
+├───Data
+│       basics.tsv.gz
+│       episode.tsv.gz
+│       episode_data.csv
+│       genre_data.csv
+│       rating.tsv.gz
+│       ratings_data.csv
+│
+├───gen
+│   └───data_preparation
+│       └───output
+│               .Rhistory
+│               cleaned_data.csv
+│
+└───SRC
+        .Rhistory
+        Data_Analysis.R
+        Data_Deployment.Rmd
+        Data_Exploration.R
+        Data_Extraction.R
+        Data_Preparation.R
+
+## Dependencies
+To run this project, the following software needs to be installed:
+-R and RStudio [Follow these installation instructions](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
+-Make [Follow these installation instructions](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
+
+## How to run this project
+To replicate our workflow, please follow these instructions:
+1. Fork this repository
+2. Run the following code on your command line/terminal:
+```
+git clone https://github.com/{your username}/ratings_series_imdb.git
+```
+3. Run the following command in this newly created directory:
+```
+make
+```
+
+## Data Extraction
 
 Below you will find the code used to extract the information from: IMDb Data Files Download (imdbws.com).
 
@@ -62,11 +114,11 @@ summary(Genre_Data)
 summary(Episode_Data)
 ```
 
-# Explaining variables per variable dataset
+## Explaining variables per variable dataset
 
 Below you will find the variable names and variable descriptions per dataset.
 
-## Ratings Dataset
+### Ratings Dataset
 
 | Variable Name   | Variable Description                                |
 |-----------------|-----------------------------------------------------|
@@ -74,7 +126,7 @@ Below you will find the variable names and variable descriptions per dataset.
 | averageRating   | Weighted average of all the individual user ratings |
 | numVotes        | Number of votes the title has received              |
 
-## Genre Dataset
+### Genre Dataset
 
 | Variable Name          | Variable Description                                                                                       |
 |------------------------|------------------------------------------------------------------------------------------------------------|
@@ -88,7 +140,7 @@ Below you will find the variable names and variable descriptions per dataset.
 | runtimeMinutes         | Primary runtime of the title, in minutes                                                                   |
 | genres (string array)  | Includes up to three genres associated with the title                                                      |
 
-## Episode dataset
+### Episode dataset
 
 | Variable Name           | Variable Description                            |
 |-------------------------|-------------------------------------------------|
@@ -97,7 +149,7 @@ Below you will find the variable names and variable descriptions per dataset.
 | seasonNumber (integer)  | Season number the episode belongs to            |
 | episodeNumber (integer) | Episode number of the tconst in the TV series   |
 
-## Cleaned_data dataset
+### Cleaned_data dataset
 
 | Variable Name             | Variable Description                                                                          |
 |---------------------------|-----------------------------------------------------------------------------------------------|
@@ -113,6 +165,15 @@ Below you will find the variable names and variable descriptions per dataset.
 | rating (double)           | Weighted average of all the individual user ratings                                           |
 | n_votes (integer)         | Number of votes the title has received                                                        |
 
-# Reference List
+## Reference List
 Danaher, P. J., Dagger, T. S., & Smith, M. S. (2011). Forecasting television ratings. International Journal of Forecasting, 27(4), 1215–1240. https://doi.org/10.1016/j.ijforecast.2010.08.002
 Hsu, P., Shen, Y., & Xie, X. (2014). Predicting Movies User Ratings with Imdb Attributes. In Lecture notes in computer science (pp. 444–453). https://doi.org/10.1007/978-3-319-11740-9_41
+
+## Contributors
+This repository is part of a project for the course Data Preparation and Workflow Management instructed by Hannes Datta at Tilburg University. The project was created by:
+
+Jibbe Beerens
+Tara Gijsbers
+Julian Peters
+Iris Verzijl
+Fleur de Wolf
