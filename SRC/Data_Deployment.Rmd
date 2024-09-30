@@ -2,13 +2,16 @@
 title: "Final Report"
 author: "Group 1"
 date: "2024-09-18"
-output: html_document
+output: 
+    html_document:
+        self_contained: TRUE
+        output_file: "Data_Deployment.html"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ### Setup ###
-#place the libraries here
+# Loading Libraries
 ```
 
 # Title Test 1 make
