@@ -14,7 +14,7 @@ User ratings are found to be a key success factor of series and help production 
 
 ## Research Question
 
-Does the length of a TV show affect the average rating of a TV show episodes in a positive or negative way?
+How does the length of a TV show affect the average rating of a TV show episodes?
 
 ## Research Method
 
