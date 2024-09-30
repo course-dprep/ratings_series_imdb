@@ -30,11 +30,15 @@ The chosen way of deployment will be a PDF report. This was chosen to make a str
 
 ## Workflow
 
-The following workflow will be performed in this research to ensure an automated and reproducible workflow: 1. Data exploration 2. Data preperation 3. Analysis 4. Evaluation and deployment
+The following workflow will be performed in this research to ensure an automated and reproducible workflow: 
+1. Data exploration
+2. Data preperation
+3. Analysis
+4. Evaluation and deployment
 
 ## Repository Overview
 Below, you find an overview of the directory structure and files of this project. 
-
+```
 │   .gitignore
 │   .Rhistory
 │   LICENSE
@@ -62,11 +66,11 @@ Below, you find an overview of the directory structure and files of this project
         Data_Exploration.R
         Data_Extraction.R
         Data_Preparation.R
-
+```
 ## Dependencies
 To run this project, the following software needs to be installed:
--R and RStudio [Follow these installation instructions](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
--Make [Follow these installation instructions](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
+- R and RStudio - [Follow these installation instructions](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
+- Make - [Follow these installation instructions](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
 
 ## How to run this project
 To replicate our workflow, please follow these instructions:
@@ -166,14 +170,14 @@ Below you will find the variable names and variable descriptions per dataset.
 | n_votes (integer)         | Number of votes the title has received                                                        |
 
 ## Reference List
-Danaher, P. J., Dagger, T. S., & Smith, M. S. (2011). Forecasting television ratings. International Journal of Forecasting, 27(4), 1215–1240. https://doi.org/10.1016/j.ijforecast.2010.08.002
-Hsu, P., Shen, Y., & Xie, X. (2014). Predicting Movies User Ratings with Imdb Attributes. In Lecture notes in computer science (pp. 444–453). https://doi.org/10.1007/978-3-319-11740-9_41
+- Danaher, P. J., Dagger, T. S., & Smith, M. S. (2011). Forecasting television ratings. International Journal of Forecasting, 27(4), 1215–1240. https://doi.org/10.1016/j.ijforecast.2010.08.002
+- Hsu, P., Shen, Y., & Xie, X. (2014). Predicting Movies User Ratings with Imdb Attributes. In Lecture notes in computer science (pp. 444–453). https://doi.org/10.1007/978-3-319-11740-9_41
 
 ## Contributors
 This repository is part of a project for the course Data Preparation and Workflow Management instructed by Hannes Datta at Tilburg University. The project was created by:
 
-Jibbe Beerens
-Tara Gijsbers
-Julian Peters
-Iris Verzijl
-Fleur de Wolf
+- Jibbe Beerens
+- Tara Gijsbers
+- Julian Peters
+- Iris Verzijl
+- Fleur de Wolf
