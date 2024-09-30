@@ -1,45 +1,68 @@
-#Second file to call for in makefile
-#This file will be used to summarize the raw data 
-
 ### Setup ###
+# Loading libraries
 library(dplyr)
 library(ggplot2)
+library(readr)  # For read_csv
 
-### Input ###
-Episode_Data <- read_csv("Data/episode_data.csv")
-Genre_Data <- read_csv("Data/genre_data.csv")
-Ratings_Data <- read_csv("Data/ratings_data.csv")
-
-### Transformation ###
-# View the structure of the data
-str(Episode_Data)
-str(Genre_Data)
-str(Ratings_Data)
-
-# View summary statistics
-summary(Episode_Data)
-summary(Genre_Data)
-summary(Ratings_Data)
-
-# View first few rows
-head(Episode_Data)
-head(Genre_Data)
-head(Ratings_Data)
-
-# Checking for NAs
-# Define function to count the NAs
-count_na_values <- function(data) {
-  sapply(data, function(x) sum(x == "\\N"))
+# Function to load data, view structure, summary, head, and count NAs
+process_datasets <- function(file_paths, show = c("structure", "summary", "head", "na_counts")) {
+  for (file_path in file_paths) {
+    # Load dataset
+    data <- read_csv(file_path)
+    
+    cat("Processing file:", file_path, "\n\n")
+    
+    # Show structure
+    if ("structure" %in% show) {
+      cat("Structure:\n")
+      str(data)
+      cat("\n")
+    }
+    
+    # Show summary statistics
+    if ("summary" %in% show) {
+      cat("Summary statistics:\n")
+      print(summary(data))
+      cat("\n")
+    }
+    
+    # Show first few rows (head)
+    if ("head" %in% show) {
+      cat("First few rows:\n")
+      print(head(data))
+      cat("\n")
+    }
+    
+    # Count missing values (counting \N as NA)
+    if ("na_counts" %in% show) {
+      cat("NA Counts:\n")
+      na_counts <- sapply(data, function(x) sum(x == "\\N"))  # Count occurrences of \N
+      
+      # Create a clearer output format
+      na_summary <- data.frame(
+        Column = names(na_counts),
+        NA_Count = na_counts
+      )
+      
+      # Filter for columns with NA counts greater than 0
+      na_summary <- na_summary[na_summary$NA_Count > 0, ]
+      
+      if (nrow(na_summary) == 0) {
+        cat("No NA values found in this dataset.\n")
+      } else {
+        print(na_summary)
+      }
+      cat("\n")
+    }
+  }
 }
 
-# Apply function to the data
-episode_na_counts <- count_na_values(Episode_Data)
-print(episode_na_counts)
+### Input ###
+# Example usage
+file_paths <- c("Data/Episode_Data.csv", "Data/Genre_Data.csv", "Data/Rating_Data.csv")
 
-genre_na_counts <- count_na_values(Genre_Data)
-print(genre_na_counts)
-
-ratings_na_counts <- count_na_values(Ratings_Data)
-print(ratings_na_counts)
-
-print('file 2 run')
+### Transformation / Output ###
+# You can specify what to show with the 'show' parameter.
+# For example: process_datasets(file_paths, show = c("structure", "summary", "head", "na_counts"))
+# We are interested in the Na's, hence the following 'show' parameters:
+process_datasets(file_paths, show = c("head", "na_counts"))
