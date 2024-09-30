@@ -40,7 +40,6 @@ The following workflow will be performed in this research to ensure an automated
 Below, you find an overview of the directory structure and files of this project. 
 ```
 │   .gitignore
-│   .Rhistory
 │   LICENSE
 │   makefile
 │   README.md
@@ -56,11 +55,9 @@ Below, you find an overview of the directory structure and files of this project
 ├───gen
 │   └───data_preparation
 │       └───output
-│               .Rhistory
 │               cleaned_data.csv
 │
 └───SRC
-        .Rhistory
         Data_Analysis.R
         Data_Deployment.Rmd
         Data_Exploration.R
@@ -176,8 +173,8 @@ Below you will find the variable names and variable descriptions per dataset.
 ## Contributors
 This repository is part of a project for the course Data Preparation and Workflow Management instructed by Hannes Datta at Tilburg University. The project was created by:
 
-- Jibbe Beerens
-- Tara Gijsbers
-- Julian Peters
-- Iris Verzijl
-- Fleur de Wolf
+- [Jibbe Beerens](https://github.com/jibbebeer)
+- [Tara Gijsbers](https://github.com/TaraGijsbers)
+- [Julian Peters](https://github.com/JulianPetersIsCoding)
+- [Iris Verzijl](https://github.com/irisverzijl)
+- [Fleur de Wolf](https://github.com/FleurdeWolf)
