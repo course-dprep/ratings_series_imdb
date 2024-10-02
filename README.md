@@ -44,7 +44,7 @@ Below, you find an overview of the directory structure and files of this project
 │   makefile
 │   README.md
 │
-├───Data
+├───data
 │       basics.tsv.gz
 │       episode.tsv.gz
 │       episode_data.csv
@@ -53,16 +53,22 @@ Below, you find an overview of the directory structure and files of this project
 │       ratings_data.csv
 │
 ├───gen
-│   └───data_preparation
+│   ├───data_preparation
+│   │   └───output
+│   │           cleaned_data.csv
+│   └───paper
 │       └───output
-│               cleaned_data.csv
+│               data_deployment.html
 │
-└───SRC
-        Data_Analysis.R
-        Data_Deployment.Rmd
-        Data_Exploration.R
-        Data_Extraction.R
-        Data_Preparation.R
+└───src
+    └───data-preparation  
+    │       data_exploration.R
+    │       data_extraction.R
+    │       data_preparation.R
+    ├───analysis
+    │       data_analysis.R
+    └───paper
+            data_deployment.Rmd
 ```
 ## Dependencies
 To run this project, the following software needs to be installed:
@@ -86,33 +92,38 @@ make
 Below you will find the code used to extract the information from: IMDb Data Files Download (imdbws.com).
 
 ```{r Data Extraction, message=FALSE, warning=FALSE}
+# Loading packages
 library(here)
 library(readr)
 
-# Create a relative data directory
-if (!dir.exists(here("Data"))) {
-  dir.create(here("Data"))
+# Function to handle downloading, reading, and saving data
+download_and_process_data <- function(url, file_name, delim = "\t", data_dir = "data") {
+  # Create a relative data directory if it doesn't exist
+  if (!dir.exists(here(data_dir))) {
+    dir.create(here(data_dir))
+  }
+  
+  # Define the file path
+  file_path <- here(data_dir, paste0(file_name, ".tsv.gz"))
+  
+  # Download the file
+  download.file(url, file_path)
+  print(paste(file_name, "file downloaded"))
+  
+  # Read the compressed file
+  data <- read_delim(gzfile(file_path), delim = delim)
+  print(paste(file_name, "data loaded into dataframe"))
+  
+  # Save the data as .csv
+  csv_path <- here(data_dir, paste0(file_name, "_data.csv"))
+  write_csv(data, csv_path)
+  print(paste(file_name, "data saved as CSV at", csv_path))
 }
 
-# Define file paths for saving data 
-ratings_path <- here("Data", "rating.tsv.gz")
-basics_path  <- here("Data", "basics.tsv.gz")
-episode_path <- here("Data", "episode.tsv.gz")
-
-# Download data files
-download.file("https://datasets.imdbws.com/title.ratings.tsv.gz", ratings_path)
-download.file("https://datasets.imdbws.com/title.basics.tsv.gz", basics_path)
-download.file("https://datasets.imdbws.com/title.episode.tsv.gz", episode_path)
-
-# Reading the compressed files directly
-Ratings_Data <- read_delim(gzfile(ratings_path), delim = "\t")
-Genre_Data   <- read_delim(gzfile(basics_path), delim = "\t")
-Episode_Data <- read_delim(gzfile(episode_path), delim = "\t")
-
-#Previewing the data
-summary(Ratings_Data)
-summary(Genre_Data)
-summary(Episode_Data)
+# Call the function for ratings, genre, and episode data
+download_and_process_data("https://datasets.imdbws.com/title.ratings.tsv.gz", "rating")
+download_and_process_data("https://datasets.imdbws.com/title.basics.tsv.gz", "genre")
+download_and_process_data("https://datasets.imdbws.com/title.episode.tsv.gz", "episode")
 ```
 
 ## Explaining variables per variable dataset
