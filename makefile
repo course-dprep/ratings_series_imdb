@@ -1,22 +1,22 @@
-All: Data/ratings_data.csv Data/genre_data.csv Data/episode_data.csv Gen/data_preparation/output/cleaned_data.csv Gen/paper/output/Data_Deployment.html
+All: data/ratings_data.csv data/genre_data.csv data/episode_data.csv gen/data_preparation/output/cleaned_data.csv gen/paper/output/data_deployment.html
 
-Data/ratings_data.csv: SRC/Data_Extraction.R
-	Rscript SRC/Data_Extraction.R
+data/ratings_data.csv: src/data-preparation/data_extraction.R
+	Rscript src/data-preparation/data_extraction.R
 
-Data/genre_data.csv: SRC/Data_Extraction.R
-	Rscript SRC/Data_Extraction.R
+data/genre_data.csv: src/data-preparation/data_extraction.R
+	Rscript src/data-preparation/data_extraction.R
 
-Data/episode_data.csv: SRC/Data_Extraction.R
-	Rscript SRC/Data_Extraction.R
+data/episode_data.csv: src/data-preparation/data_extraction.R
+	Rscript src/data-preparation/data_extraction.R
 
-Gen/data_preparation/output/cleaned_data.csv: SRC/Data_Preparation.R
-	Rscript SRC/Data_Preparation.R
+gen/data_preparation/output/cleaned_data.csv: src/data-preparation/data_preparation.R
+	Rscript src/data-preparation/data_preparation.R
 
-Gen/paper/output/Data_Deployment.html: SRC/Data_Deployment.Rmd
-	if not exist Gen\paper mkdir Gen\paper
-	if not exist Gen\paper\output mkdir Gen\paper\output
-	Rscript -e "rmarkdown::render('SRC/Data_Deployment.Rmd', output_dir = 'Gen/paper/output')"
+gen/paper/output/data_deployment.html: src/paper/data_deployment.Rmd
+	if not exist gen\paper mkdir gen\paper
+	if not exist gen\paper\output mkdir gen\paper\output
+	Rscript -e "rmarkdown::render('src/paper/data_deployment.Rmd', output_dir = 'gen/paper/output')"
 
 clean: 
-	Rscript -e "unlink('Data', recursive = TRUE)"
-	Rscript -e "unlink('Gen', recursive = TRUE)"
+	Rscript -e "unlink('data', recursive = TRUE)"
+	Rscript -e "unlink('gen', recursive = TRUE)"

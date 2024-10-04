@@ -2,11 +2,15 @@
 # Loading libraries
 library(dplyr)
 library(ggplot2)
-library(readr)  # For read_csv
+library(readr)
+library(here)  # For dynamic file paths
 
 # Function to load data, view structure, summary, head, and count NAs
-process_datasets <- function(file_paths, show = c("structure", "summary", "head", "na_counts")) {
-  for (file_path in file_paths) {
+process_datasets <- function(file_names, data_dir = "data", show = c("structure", "summary", "head", "na_counts")) {
+  for (file_name in file_names) {
+    # Construct file path using the here package
+    file_path <- here(data_dir, file_name)
+    
     # Load dataset
     data <- read_csv(file_path)
     
@@ -59,10 +63,10 @@ process_datasets <- function(file_paths, show = c("structure", "summary", "head"
 
 ### Input ###
 # Example usage
-file_paths <- c("Data/Episode_Data.csv", "Data/Genre_Data.csv", "Data/Rating_Data.csv")
+file_names <- c("episode_data.csv", "genre_data.csv", "rating_data.csv")
 
 ### Transformation / Output ###
 # You can specify what to show with the 'show' parameter.
-# For example: process_datasets(file_paths, show = c("structure", "summary", "head", "na_counts"))
+# For example: process_datasets(file_names, show = c("structure", "summary", "head", "na_counts"))
 # We are interested in the Na's, hence the following 'show' parameters:
-process_datasets(file_paths, show = c("head", "na_counts"))
+process_datasets(file_names, show = c("head", "na_counts"))

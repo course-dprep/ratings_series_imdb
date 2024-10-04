@@ -6,23 +6,23 @@ library(here)
 library(readr)
 
 # Define a function for processing the data
-process_data <- function(episode_file, genre_file, ratings_file, output_path) {
+process_data <- function(episode_file, genre_file, ratings_file, output_dir) {
   
-  # Creating the directory for output files if it doesn't exist
-  if (!dir.exists(output_path)) {
-    dir.create(output_path, recursive = TRUE)
-    print(paste(output_path, "saving location created"))
+  # Create the output directory if it doesn't exist
+  if (!dir.exists(output_dir)) {
+    dir.create(output_dir, recursive = TRUE)
+    print(paste(output_dir, "saving location created"))
   }
   
   # Reading datasets
-  Episode_Data <- read_csv(episode_file)
-  Genre_Data <- read_csv(genre_file)
-  Ratings_Data <- read_csv(ratings_file)
+  episode_data <- read_csv(episode_file)
+  genre_data <- read_csv(genre_file)
+  ratings_data <- read_csv(ratings_file)
   
   # Combining datasets and filtering data
-  filtered_data <- Episode_Data %>%
-    left_join(Genre_Data, by = "tconst") %>%
-    left_join(Ratings_Data, by = "tconst") %>%
+  filtered_data <- episode_data %>%
+    left_join(genre_data, by = "tconst") %>%
+    left_join(ratings_data, by = "tconst") %>%
     select(-titleType, -primaryTitle, -originalTitle) %>%
     group_by(parentTconst) %>%
     filter(all(numVotes >= 206) & all(episodeNumber != "\\N") & all(seasonNumber != "\\N")) %>%
@@ -58,7 +58,7 @@ process_data <- function(episode_file, genre_file, ratings_file, output_path) {
            series_runtime = season_runtime + prev_season_runtime)
   
   # Writing the cleaned data to CSV
-  output_file <- file.path(output_path, "cleaned_data.csv")
+  output_file <- file.path(output_dir, "cleaned_data.csv")
   write_csv(filtered_data, output_file)
   print(paste("cleaned_data.csv file created at", output_file))
 }
@@ -66,8 +66,8 @@ process_data <- function(episode_file, genre_file, ratings_file, output_path) {
 ### Input / Transformation / Output ###
 # Call the function
 process_data(
-  episode_file = "Data/Episode_Data.csv",
-  genre_file = "Data/Genre_Data.csv",
-  ratings_file = "Data/Rating_Data.csv",
-  output_path = here("Gen", "data_preparation", "output")
+  episode_file = here("data", "episode_data.csv"),
+  genre_file = here("data", "genre_data.csv"),
+  ratings_file = here("data", "rating_data.csv"),
+  output_dir = here("gen", "data_preparation", "output")
 )
