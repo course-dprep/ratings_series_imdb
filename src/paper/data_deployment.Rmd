@@ -29,10 +29,36 @@ The chosen research method for the mentioned research question is a regression a
 To perform the regression analysis we will make use of the following data sets: 1. title.episode.tsv.gz a. To find the series and the episodes 2. title.ratings.tsv.gz a. Average rating of individual users combined 3. title.basics.tsv.gz a. Genre for cross reference
 
 # Results 
-- insert figures
 
 ```{r}
-# if you put some code here, it can generate a figure in here
+# Results:
+## Code for ggplot: Average Rating Episode Number
+average_rating <- data %>%
+  group_by(episode_number) %>%
+  summarise(avg_rating = mean(rating, na.rm = TRUE))
+
+ggplot(average_rating, aes(x = episode_number, y = avg_rating)) + 
+  geom_line() + 
+  labs(title = "Average Rating by Episode Number", x = "Episode Number", y = "Average Rating")
+
+### Linear regression model
+model <- lm(rating ~ n_votes + episode_minutes, data = data)
+print(model)
+
+#### Relationship between runtime and ratings
+ggplot(data, aes(x = episode_minutes, y = rating)) + 
+  geom_point(alpha = 0.5) + 
+  geom_smooth(method = "lm", se = FALSE, color = "red") + 
+  labs(title = "Relationship Between Episode Runtime and Ratings", x = "Episode Runtime (minutes)", y = "Rating")
+
+##### Votes by season 
+season_votes <- data %>%
+  group_by(season_number) %>%
+  summarise(total_votes = sum(n_votes, na.rm = TRUE))
+
+ggplot(season_votes, aes(x = as.factor(season_number), y = total_votes)) + 
+  geom_bar(stat = "identity", fill = "dodgerblue") + 
+  labs(title = "Total Votes by Season", x = "Season Number", y = "Total Votes")
 ```
 
 # Theoretical / Practical Implications
@@ -44,7 +70,15 @@ This study contributes to academic understanding by filling a gap in literature 
 This study could impact industry practices, especially in the TV and media production field. Production companies can use this information to tailor their series' structure. For example, they could optimize series length to match viewer preferences and improve engagement and ratings. Additionally, streaming services that release entire seasons at once could benefit from this study to predict viewer behavior and ratings based on series length, helping them decide how to structure their release strategies. On top of that, since ratings are linked to financial success, as mentioned in the motivation (Hsu et al., 2014), this study could help companies maximize returns by aligning series length with audience expectations, ultimately boosting viewership and profitability
 
 # Conclusion
-- write conclusion based on figures
+This study aimed to investigate the relationship between the length of a TV show and the average ratings of its episodes. The analysis employed several visualizations and a linear regression model that visualized the evaluating of this relationship. 
+
+1) The ggplot for the Average Rating by Episode Numbers indicates that the viewer ratings tend to fluctuate throughout the season of a TV show. Such fluctuations may suggest varying audience engagement levels or possible shifts in episode quality. 
+2) The linear regressions shows that the number of votes and the episode length both significantly influence the viewer ratings. Each additional vote increases the average rating slightly, as well as each extra minute of runtime. 
+3) The third displayed results shows the relationship between episode runtime and ratings. This plot illustrates a positive correlation, suggesting that longer episodes tend to receive higher ratings on average. This increase in viewer satisfaction can possibly be explained by the fact that increased runtime may facilitate more comprehensive stroytelling and thus character exploration. 
+4) The final result shows the total votes by season in a bar chart. The chart visualized that audience engagement differs across the different seasons of a TV show. Which displays the challenge of keeping the audience engaged with the TV show over a longer period of time. 
+
+The mentioned results contributed to the conclusion of the research question. To summarize, a longer TV episode can positively effect the rating of the show. A longer episode thus in general leads to a higher rating. On the other hand, does an increase in the number of seasons generally lead to less customer engagement and less positive ratings. The findings emphasize the importance of strategic planning in episode and season length to maximize viewer satisfaction and ratings.
+
 ```{r}
 
 ```
