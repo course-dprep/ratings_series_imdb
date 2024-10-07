@@ -61,7 +61,7 @@ Below, you find an overview of the directory structure and files of this project
 │               data_deployment.html
 │
 └───src
-    └───data-preparation  
+    ├───data-preparation  
     │       data_exploration.R
     │       data_extraction.R
     │       data_preparation.R
