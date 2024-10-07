@@ -87,45 +87,6 @@ git clone https://github.com/{your username}/ratings_series_imdb.git
 make
 ```
 
-## Data Extraction
-
-Below you will find the code used to extract the information from: IMDb Data Files Download (imdbws.com).
-
-```{r Data Extraction, message=FALSE, warning=FALSE}
-# Loading packages
-library(here)
-library(readr)
-
-# Function to handle downloading, reading, and saving data
-download_and_process_data <- function(url, file_name, delim = "\t", data_dir = "data") {
-  # Create a relative data directory if it doesn't exist
-  if (!dir.exists(here(data_dir))) {
-    dir.create(here(data_dir))
-  }
-  
-  # Define the file path
-  file_path <- here(data_dir, paste0(file_name, ".tsv.gz"))
-  
-  # Download the file
-  download.file(url, file_path)
-  print(paste(file_name, "file downloaded"))
-  
-  # Read the compressed file
-  data <- read_delim(gzfile(file_path), delim = delim)
-  print(paste(file_name, "data loaded into dataframe"))
-  
-  # Save the data as .csv
-  csv_path <- here(data_dir, paste0(file_name, "_data.csv"))
-  write_csv(data, csv_path)
-  print(paste(file_name, "data saved as CSV at", csv_path))
-}
-
-# Call the function for ratings, genre, and episode data
-download_and_process_data("https://datasets.imdbws.com/title.ratings.tsv.gz", "rating")
-download_and_process_data("https://datasets.imdbws.com/title.basics.tsv.gz", "genre")
-download_and_process_data("https://datasets.imdbws.com/title.episode.tsv.gz", "episode")
-```
-
 ## Explaining variables per variable dataset
 
 Below you will find the variable names and variable descriptions per dataset.
@@ -176,6 +137,11 @@ Below you will find the variable names and variable descriptions per dataset.
 | genres (string array)     | Includes up to three genres associated with the title                                         |
 | rating (double)           | Weighted average of all the individual user ratings                                           |
 | n_votes (integer)         | Number of votes the title has received                                                        |
+
+## Results
+After conducting this research and inspecting the research question, the following can be concluded based on the output: 
+- The lenght of a TV episode does impact the rating of the specific show. The results of our research show that the length of a TV episode positively impact the ratings of that show. A longer episode generally thus means a higher rating.
+- On the other hand, when the number of seasons of a TV show increases, the lower the ratings for that show become. A possible explanation could be that the consumer engagement fades over time as the number of seasons for the show increase.
 
 ## Reference List
 - Danaher, P. J., Dagger, T. S., & Smith, M. S. (2011). Forecasting television ratings. International Journal of Forecasting, 27(4), 1215–1240. https://doi.org/10.1016/j.ijforecast.2010.08.002
