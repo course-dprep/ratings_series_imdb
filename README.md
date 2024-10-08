@@ -22,7 +22,6 @@ The chosen research method for the mentioned research question is a regression a
 
 To perform the regression analysis we will make use of the following data sets: 1. title.episode.tsv.gz a. To find the series and the episodes 2. title.ratings.tsv.gz a. Average rating of individual users combined 3. title.basics.tsv.gz a. Genre for cross reference
 
-## Results
 
 ## Way of Deployment
 
