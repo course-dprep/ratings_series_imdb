@@ -139,9 +139,11 @@ Below you will find the variable names and variable descriptions per dataset.
 | season_runtime (integer)  | Number of total minutes the tv show has aired                                                 |
 
 ## Results
-After conducting this research and inspecting the research question, the following can be concluded based on the output: 
-- The lenght of a TV episode does impact the rating of the specific show. The results of our research show that the length of a TV episode positively impact the ratings of that show. A longer episode generally thus means a higher rating.
-- On the other hand, when the number of seasons of a TV show increases, the lower the ratings for that show become. A possible explanation could be that the consumer engagement fades over time as the number of seasons for the show increase.
+The aim of this study was to explore the relationship between the length of a TV show and their average rating. Using a ggplot2 visualization, the analysis examined how TV show runtime impacted viewer evaluations.
+
+The displayed results shows the relationship between episode runtime and ratings. This plot illustrates a positive correlation, suggesting that longer episodes tend to receive higher ratings on average. This increase in viewer satisfaction can possibly be explained by the fact that increased runtime may facilitate more comprehensive stroytelling and thus character exploration. 
+
+The mentioned results contributed to the conclusion of the research question. To summarize, a longer TV show runtime can negatively effect the rating of the show. A shorter TV show runtime thus in general leads to a higher rating. 
 
 ## Reference List
 - Danaher, P. J., Dagger, T. S., & Smith, M. S. (2011). Forecasting television ratings. International Journal of Forecasting, 27(4), 1215–1240. https://doi.org/10.1016/j.ijforecast.2010.08.002
