@@ -136,6 +136,7 @@ Below you will find the variable names and variable descriptions per dataset.
 | genres (string array)     | Includes up to three genres associated with the title                                         |
 | rating (double)           | Weighted average of all the individual user ratings                                           |
 | n_votes (integer)         | Number of votes the title has received                                                        |
+| season_runtime (integer)  | Number of total minutes the tv show has aired                                                 |
 
 ## Results
 After conducting this research and inspecting the research question, the following can be concluded based on the output: 
