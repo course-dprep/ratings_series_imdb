@@ -85,7 +85,12 @@ git clone https://github.com/{your username}/ratings_series_imdb.git
 ```
 make
 ```
+4. Install the following R packages:
+```
+packages <- c("dplyr", "tidyverse", "readr", "here", "tidyr", "broom", "kableExtra", "knitr", "ggplot2")
 
+install.packages(packages)
+```
 ## Explaining variables per variable dataset
 
 Below you will find the variable names and variable descriptions per dataset.
