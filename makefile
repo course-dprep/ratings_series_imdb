@@ -1,12 +1,6 @@
 All: data/ratings_data.csv data/genre_data.csv data/episode_data.csv gen/data_preparation/output/cleaned_data.csv gen/paper/output/data_deployment.html
 
-data/ratings_data.csv: src/data-preparation/data_extraction.R
-	Rscript src/data-preparation/data_extraction.R
-
-data/genre_data.csv: src/data-preparation/data_extraction.R
-	Rscript src/data-preparation/data_extraction.R
-
-data/episode_data.csv: src/data-preparation/data_extraction.R
+data/ratings_data.csv data/genre_data.csv data/episode_data.csv: src/data-preparation/data_extraction.R
 	Rscript src/data-preparation/data_extraction.R
 
 gen/data_preparation/output/cleaned_data.csv: src/data-preparation/data_preparation.R

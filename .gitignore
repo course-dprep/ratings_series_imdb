@@ -9,3 +9,6 @@
 
 #Excluding Rdata
 *.Rdata
+
+#Excluding Zipfile
+*.gz

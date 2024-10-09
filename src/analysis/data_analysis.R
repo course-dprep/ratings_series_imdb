@@ -32,4 +32,3 @@ run_regression_analysis <- function(cleaned_data) {
 
 ### Output ###
 run_regression_analysis(cleaned_data)
-

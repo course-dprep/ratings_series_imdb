@@ -25,7 +25,7 @@ To perform the regression analysis we will make use of the following data sets: 
 
 ## Way of Deployment
 
-The chosen way of deployment will be a PDF report. This was chosen to make a structured layout and to ensure consistency over multiple devices and platforms.
+The chosen way of deployment will be a HTML report. This was chosen to make a structured layout and to ensure consistency over multiple devices and platforms.
 
 ## Workflow
 
