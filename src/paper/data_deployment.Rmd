@@ -24,7 +24,7 @@ library(kableExtra)
 
 User ratings are found to be a key success factor of series and help production companies gain financial success (Hsu et al., 2014). As such, it is important to determine what factors influence these ratings, in order to develop series that are most likely to receive high ratings. The length of an individual episode is found to have a significant effect on the rating on that episode (Danaher et al., 2011). However, how the length of the complete series influences the rating of the episodes remains unexplored. This study fills the gap in the literature by exploring the following research question: 
 
-How does the length of a TV show affect the average rating of a TV show episodes?
+What is the effect of the length of a TV show on the average rating of the TV show episodes?
 
 # Research Method
 
@@ -36,22 +36,22 @@ To perform the regression analysis we will make use of the following data sets: 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Results:
 ### Input ###
-#Creating the data variable
+#Creating the data df
 data <- read_csv(here("gen", "data_preparation", "output", "cleaned_data.csv"))
 
-## Summarry statistics
+## Summary statistics
 nrow(data)
 head(data)
 summary(data)
 
-data %>% group_by('season_runtime') %>% summarize(average_runtime = mean(season_runtime))
+data %>% group_by('season_runtime') %>% summarize(average_runtime = mean(series_runtime))
 data %>% group_by('rating') %>% summarize(average_rating = mean(rating))
 
 #### Relationship between season runtime and ratings
-ggplot(data, aes(x = season_runtime, y = rating)) + 
+ggplot(data, aes(x = series_runtime, y = rating)) + 
   geom_point(alpha = 0.5) + 
   geom_smooth(method = "lm", se = FALSE, color = "red") + 
-  labs(title = "Relationship Between TV-show Runtime and Ratings", x = "Season Runtime (minutes)", y = "Rating")
+  labs(title = "Relationship Between TV show Runtime and Ratings", x = "TV show Runtime (minutes)", y = "Rating")
 
 ```
 
@@ -65,8 +65,6 @@ This study could impact industry practices, especially in the TV and media produ
 
 # Conclusion
 
-The aim of this study was to explore the relationship between the length of a TV show and their average rating. Using a ggplot2 visualization, the analysis examined how TV show runtime impacted viewer evaluations.
+The aim of this study was to explore the relationship between the length of a TV show and the average rating of the TV show episodes. Using a linear regression, supported by a scatter plot visualization, the analysis examined how TV show runtime impacted viewer evaluations.
 
-The displayed results shows the relationship between episode runtime and ratings. This plot illustrates a positive correlation, suggesting that longer episodes tend to receive higher ratings on average. This increase in viewer satisfaction can possibly be explained by the fact that increased runtime may facilitate more comprehensive stroytelling and thus character exploration. 
-
-The mentioned results contributed to the conclusion of the research question. To summarize, a longer TV show runtime can negatively effect the rating of the show. A shorter TV show runtime thus in general leads to a higher rating. 
+The results of the regression analysis reveal a significant negative effect of TV show length on episode rating. The plot  visualizes this effect. As such, the longer a TV show runs, the lower the ratings of the episodes will be. A shorter TV show runtime thus leads to a higher rating.  
