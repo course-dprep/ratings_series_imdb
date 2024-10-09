@@ -47,7 +47,10 @@ summary(data)
 data %>% group_by('season_runtime') %>% summarize(average_runtime = mean(series_runtime))
 data %>% group_by('rating') %>% summarize(average_rating = mean(rating))
 
-#### Relationship between season runtime and ratings
+## Regression series runtime and ratings
+run_regression_analysis(cleaned_data)
+
+#### Relationship between series runtime and ratings
 ggplot(data, aes(x = series_runtime, y = rating)) + 
   geom_point(alpha = 0.5) + 
   geom_smooth(method = "lm", se = FALSE, color = "red") + 
