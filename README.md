@@ -7,6 +7,7 @@ date: "2024-09-10"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 # Impact of TV Show Length on Episode Ratings - A Study on IMDB Data
 
 ## Research Motivation
@@ -20,8 +21,9 @@ What is the effect of the length of a TV show on the average rating of the TV sh
 
 The chosen research method for the mentioned research question is a regression analysis. This research method will be suitable to investigate the relation between the following variables: the length of a TV show and the episode ratings. Performing a regression analysis allows us to determine if the length of a TV show significantly affects the ratings of its episodes and to learn more about the direction of the relationship.
 
-To perform the regression analysis we will make use of the following data sets: 1. title.episode.tsv.gz a. To find the series and the episodes 2. title.ratings.tsv.gz a. Average rating of individual users combined 3. title.basics.tsv.gz a. Genre for cross reference
-
+To perform the regression analysis we will make use of the following data sets: 
+1. title.episode.tsv.gz a. To find the series and the episodes 
+2. title.ratings.tsv.gz a. Average rating of individual users combined 
 
 ## Way of Deployment
 
@@ -72,6 +74,11 @@ Below, you find an overview of the directory structure and files of this project
 ## Dependencies
 To run this project, the following software needs to be installed:
 - R and RStudio - [Follow these installation instructions](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
+  - Install the following R packages:
+```
+packages <- c("dplyr", "tidyverse", "readr", "here", "tidyr", "broom", "kableExtra", "knitr", "ggplot2")
+install.packages(packages)
+```
 - Make - [Follow these installation instructions](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
 
 ## How to run this project
@@ -84,12 +91,7 @@ git clone https://github.com/{your username}/ratings_series_imdb.git
 3. Run the following command in this newly created directory:
 ```
 make
-```
-4. Install the following R packages:
-```
-packages <- c("dplyr", "tidyverse", "readr", "here", "tidyr", "broom", "kableExtra", "knitr", "ggplot2")
 
-install.packages(packages)
 ```
 ## Explaining variables per variable dataset
 
@@ -141,14 +143,12 @@ Below you will find the variable names and variable descriptions per dataset.
 | genres (string array)     | Includes up to three genres associated with the title                                         |
 | rating (double)           | Weighted average of all the individual user ratings                                           |
 | n_votes (integer)         | Number of votes the title has received                                                        |
-| season_runtime (integer)  | Number of total minutes the tv show has aired                                                 |
+| season_runtime (integer)  | Number of total minutes the TV show has aired                                                 |
 
 ## Results
-The aim of this study was to explore the relationship between the length of a TV show and their average rating. Using a ggplot2 visualization, the analysis examined how TV show runtime impacted viewer evaluations.
+The aim of this study was to explore the relationship between the length of a TV show and episode rating. Using a regression, supported by a plot visualization, the analysis examined how TV show runtime impacted viewer evaluations.
 
-The displayed results shows the relationship between episode runtime and ratings. This plot illustrates a positive correlation, suggesting that longer episodes tend to receive higher ratings on average. This increase in viewer satisfaction can possibly be explained by the fact that increased runtime may facilitate more comprehensive stroytelling and thus character exploration. 
-
-The mentioned results contributed to the conclusion of the research question. To summarize, a longer TV show runtime can negatively effect the rating of the show. A shorter TV show runtime thus in general leads to a higher rating. 
+Using the results of the regression analysis, it can be concluded that there is a negative correlation between TV show length and episode ratings.
 
 ## Reference List
 - Danaher, P. J., Dagger, T. S., & Smith, M. S. (2011). Forecasting television ratings. International Journal of Forecasting, 27(4), 1215–1240. https://doi.org/10.1016/j.ijforecast.2010.08.002
