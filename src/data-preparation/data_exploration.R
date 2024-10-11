@@ -1,4 +1,3 @@
-### Setup ###
 # Loading libraries
 library(dplyr)
 library(ggplot2)
@@ -61,11 +60,9 @@ process_datasets <- function(file_names, data_dir = "data", show = c("structure"
   }
 }
 
-### Input ###
 # Example usage
 file_names <- c("episode_data.csv", "genre_data.csv", "rating_data.csv")
 
-### Transformation / Output ###
 # You can specify what to show with the 'show' parameter.
 # For example: process_datasets(file_names, show = c("structure", "summary", "head", "na_counts"))
 # We are interested in the Na's, hence the following 'show' parameters:

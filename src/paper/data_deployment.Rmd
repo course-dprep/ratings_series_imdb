@@ -35,19 +35,17 @@ To perform the regression analysis we will make use of the following data sets: 
 
 # Results
 
-The aim of this study was to explore the relationship between TV show length and episode rating. A regression analysis, supported by a plot visualization (both can be seen below), examined how runtime impacts viewer evaluations.
+The aim of this study was to explore the relationship between TV show length and episode rating. A regression analysis, supported by a plot visualization (both can be found below), examined how runtime impacts viewer evaluations.
 
 The results show a negative relationship between series runtime and ratings. The intercept is 7.864, indicating that a show with 0 runtime would have an estimated rating of 7.86. The coefficient for runtime is -0.0000142, meaning each additional minute slightly decreases the rating by 0.0000142 points.
 
-The result is statistically significant, with a p-value of 0, confirming that the relationship is unlikely to be due to chance. While the effect is small, longer runtimes do to result in lower ratings. Both the regression analysis and plot visualization can be seen below.
+The result is statistically significant, with a p-value of 0, confirming that the relationship is unlikely to be due to chance. While the effect is small, longer runtimes do result in lower ratings. Both the regression analysis and plot visualization can be seen below.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Results:
-### Input ###
 #Creating the data df
 data <- read_csv(here("gen", "data_preparation", "output", "cleaned_data.csv"))
 
-### Transformation/Output ###
 
 ### Linear regression model
 # Create function to do the regression analysis and make a table for the report
@@ -70,7 +68,7 @@ run_regression_analysis <- function(data) {
 }
 run_regression_analysis(data)
 
-#### Relationship between TV show runtime and ratings
+#### Plot of relationship between TV show runtime and ratings
 ggplot(data, aes(x = series_runtime, y = rating)) + 
   geom_point(alpha = 0.5) + 
   geom_smooth(method = "lm", se = FALSE, color = "red") + 

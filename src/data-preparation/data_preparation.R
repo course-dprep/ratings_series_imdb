@@ -1,4 +1,3 @@
-### Setup ###
 # Loading necessary libraries
 library(dplyr)
 library(tidyverse)
@@ -63,7 +62,6 @@ process_data <- function(episode_file, genre_file, ratings_file, output_dir) {
   print(paste("cleaned_data.csv file created at", output_file))
 }
 
-### Input / Transformation / Output ###
 # Call the function
 process_data(
   episode_file = here("data", "episode_data.csv"),

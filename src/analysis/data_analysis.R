@@ -1,4 +1,3 @@
-### Setup ###
 library(readr)
 library(here)
 library(dplyr)
@@ -6,10 +5,8 @@ library(broom)
 library(knitr)
 library(kableExtra) 
 
-### Input ###
 cleaned_data <- read_csv(here("gen", "data_preparation", "output", "cleaned_data.csv"))
 
-### Transformation ###
 # Create function to do the regression analysis and make a table for the report
 
 run_regression_analysis <- function(cleaned_data) {
@@ -30,5 +27,4 @@ run_regression_analysis <- function(cleaned_data) {
     return(tidy_table)
 }
 
-### Output ###
 run_regression_analysis(cleaned_data)

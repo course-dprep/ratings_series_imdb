@@ -94,7 +94,7 @@ make
 ```
 ## Explaining of the datasets
 
-The data is explored in the data_exploration.R file. This can be executed by running the file after the data is extracted with data_extraction.R. Variables not used in this research are retained in the dataset for potential future analysis. Similarly, the genre_data.csv was downloaded to provide additional data for future research purposes. Below you will find the variable names and variable descriptions per dataset.
+The data is explored using the data_exploration.R file. This can be re-executed by running the file after the data is extracted using data_extraction.R. Variables that were not of interest in this research are retained in the dataset for potential future research. Similarly, the genre_data.csv was downloaded to provide additional data for future research purposes. Below you will find the variable names and variable descriptions per dataset, including both the raw datasets and the cleaned dataset.
 
 ### Ratings Dataset
 

@@ -1,4 +1,3 @@
-### Setup ###
 # Loading packages
 library(here)
 library(readr)
@@ -34,7 +33,6 @@ download_and_process_data <- function(url, file_name, delim = "\t", data_dir = "
   }
 }
 
-### Input / Transformation / Output ###
 # Call the function for ratings, genre, and episode data
 download_and_process_data("https://datasets.imdbws.com/title.ratings.tsv.gz", "rating")
 Sys.sleep(2)
