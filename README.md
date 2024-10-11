@@ -94,7 +94,7 @@ make
 ```
 ## Explaining of the datasets
 
-The data is explored in the data_exploration.R file. This can be executerd by running the file after the data is extracted with data_extraction.R. Variables that are kept in the dataset but not used in this research are retained in case future research includes them in the analysis. Below you will find the variable names and variable descriptions per dataset.
+The data is explored in the data_exploration.R file. This can be executed by running the file after the data is extracted with data_extraction.R. Variables that are kept in the dataset but not used in this research are retained in case future research includes them in the analysis. Below you will find the variable names and variable descriptions per dataset.
 
 ### Ratings Dataset
 
